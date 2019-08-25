@@ -16,6 +16,7 @@ public class Game {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private Date gameTime;
+
     @OneToMany(mappedBy="game", fetch=FetchType.EAGER)
     Set<GamePlayer> gamePlayers;
     public Game() {

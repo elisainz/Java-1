@@ -16,8 +16,15 @@ public class SalvoController {
     private GameRepository gameRepository;
 
     @RequestMapping ("/games")
-    public List <Game> getGames() {
-        return gameRepository.findAll();
+    public List <Long> getGames() {
+        return gameRepository.findAll()
+                             .stream ()
+                             .map(Game-> Game.getId())
+                             .collect(Collectors.toList);
+
+
+
+
     }
 
 }
