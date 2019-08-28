@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class GamePlayer {
 
     @Id
@@ -26,8 +27,8 @@ public class GamePlayer {
     }
 
 
-    public GamePlayer(Date joinDate) {
-        this.joinDate = joinDate;
+    public GamePlayer(Date joinDate, Game game, Player player) {
+        this.joinDate = joinDate; this.game = game; this.player = player;
     }
 
     public long getId() {
