@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Arrays;
 import java.util.Date;
 
 @SpringBootApplication
@@ -15,7 +16,7 @@ public class SalvoApplication {
 	}
 	@Bean
 	public CommandLineRunner initData(PlayerRepository playerRepository,
-									  GameRepository gameRepository) {
+									  GameRepository gameRepository, GamePlayerRepository gamePlayerRepository) {
 		return (args) -> {
 			// save a couple of customers
 			Player player1 = new Player("j.bauer@ctu.gov");
@@ -46,6 +47,9 @@ public class SalvoApplication {
 			GamePlayer gameplayer3 = new GamePlayer (date1, game2, player2);
 			GamePlayer gameplayer4 = new GamePlayer (date1, game2, player4);
 			GamePlayer gameplayer5 = new GamePlayer (date1, game3, player4);
+
+			gamePlayerRepository.saveAll(Arrays.asList(gameplayer1,gameplayer2, gameplayer3, gameplayer4, gameplayer5));
+
 
 
 

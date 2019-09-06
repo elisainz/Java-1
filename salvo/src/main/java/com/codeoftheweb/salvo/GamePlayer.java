@@ -38,6 +38,14 @@ public class GamePlayer {
     public Date getJoinDate() {
         return joinDate;
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Game getGame() {
+        return game;
+    }
 }
 
 

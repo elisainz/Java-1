@@ -24,6 +24,14 @@ public class Player {
 
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public Set<GamePlayer> getGamePlayers() {
+        return gamePlayers;
+    }
+
     public String getUserName() {
         return userName;
     }
