@@ -17,7 +17,7 @@ public class Player {
     @OneToMany(mappedBy="player", fetch=FetchType.EAGER)
     Set<GamePlayer> gamePlayers;
 
-    public Player() { }
+    public Player() { }  //constructor vacio
 
     public Player(String user) {
         this.userName = user;
