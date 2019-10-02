@@ -56,10 +56,7 @@ public class GamePlayer {
         return ships;
     }
 
-    public Set<Salvo> getSalvoes() //getter
-    {
-        return salvoes;
-    }
+
 
 }
 

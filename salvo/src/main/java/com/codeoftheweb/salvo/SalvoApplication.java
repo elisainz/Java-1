@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ public class SalvoApplication {
 	}
 	@Bean
 	public CommandLineRunner initData(PlayerRepository playerRepository,
-									  GameRepository gameRepository, GamePlayerRepository gamePlayerRepository) {
+									  GameRepository gameRepository, GamePlayerRepository gamePlayerRepository, ShipRepository shipRepository) {
 		return (args) -> {
 			// save a couple of customers
 			Player player1 = new Player("j.bauer@ctu.gov");
@@ -38,9 +39,8 @@ public class SalvoApplication {
 			Game game2 = new Game (date2);
 			Game game3 = new Game (date3);
 
-			gameRepository.save(game1);
-			gameRepository.save(game2);
-			gameRepository.save(game3);
+			gameRepository.saveAll(Arrays.asList(game1,game2,game3));
+
 
 			GamePlayer gameplayer1 = new GamePlayer (date1, game1, player1); //pruebas
 			GamePlayer gameplayer2 = new GamePlayer (date1, game1, player2);
@@ -49,6 +49,16 @@ public class SalvoApplication {
 			GamePlayer gameplayer5 = new GamePlayer (date1, game3, player4);
 
 			gamePlayerRepository.saveAll(Arrays.asList(gameplayer1,gameplayer2, gameplayer3, gameplayer4, gameplayer5));
+
+
+
+			Ship ship1 = new Ship("Destroyer", gameplayer1, new ArrayList<String>(Arrays.asList("A1","A2")));
+			Ship ship2 = new Ship("Destroyer", gameplayer1, new ArrayList<String>(Arrays.asList("C6","C7")));
+			Ship ship3 = new Ship("Submarine", gameplayer2, new ArrayList<String>(Arrays.asList("E1", "F1", "G1" )));
+			Ship ship4 = new Ship("Patrol Boat", gameplayer2, new ArrayList<String>(Arrays.asList("B4", "B5")));
+
+			shipRepository.saveAll(Arrays.asList(ship1,ship2,ship3,ship4));
+
 
 
 
