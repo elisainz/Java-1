@@ -53,11 +53,10 @@ public class SalvoApplication {
 
 
 			Ship ship1 = new Ship("Destroyer", gameplayer1, new ArrayList<String>(Arrays.asList("A1","A2")));
-			Ship ship2 = new Ship("Destroyer", gameplayer1, new ArrayList<String>(Arrays.asList("C6","C7")));
-			Ship ship3 = new Ship("Submarine", gameplayer2, new ArrayList<String>(Arrays.asList("E1", "F1", "G1" )));
-			Ship ship4 = new Ship("Patrol Boat", gameplayer2, new ArrayList<String>(Arrays.asList("B4", "B5")));
+			Ship ship2 = new Ship("Submarine", gameplayer2, new ArrayList<String>(Arrays.asList("E1", "F1", "G1" )));
+			Ship ship3 = new Ship("atrol Boat", gameplayer2, new ArrayList<String>(Arrays.asList("B4", "B5"  )));
 
-			shipRepository.saveAll(Arrays.asList(ship1,ship2,ship3,ship4));
+			shipRepository.saveAll(Arrays.asList(ship1,ship2,ship3));
 
 
 

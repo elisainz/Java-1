@@ -13,14 +13,14 @@ function loadData(){
             console.log(data)
             let playerInfo;
             if(data.gamePlayers[0].id == getParameterByName('gp'))
-                playerInfo = [data.gamePlayers[0].player.email,data.gamePlayers[1].player.email];
+                playerInfo = [data.gamePlayers[0].player.userName,data.gamePlayers[1].player.userName];
             else
-                playerInfo = [data.gamePlayers[1].player.email,data.gamePlayers[0].player.email];
+                playerInfo = [data.gamePlayers[1].player.userName,data.gamePlayers[0].player.userName];
 
             $('#playerInfo').text(playerInfo[0] + '(you) vs ' + playerInfo[1]);
 
             data.ships.forEach(function(shipPiece){
-                shipPiece.shipLocations.forEach(function(shipLocation){
+                shipPiece.locations.forEach(function(shipLocation){
                     $('#'+shipLocation).addClass('ship-piece');
                 })
             });

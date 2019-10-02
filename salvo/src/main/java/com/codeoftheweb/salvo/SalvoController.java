@@ -20,8 +20,6 @@ public class SalvoController {
 
     @Autowired
     private GameRepository gameRepository;
-
-    @Autowired
     private GamePlayerRepository gamePlayerRepository;
 
     @RequestMapping ("/games")
@@ -64,7 +62,7 @@ public class SalvoController {
 
     @RequestMapping("/game_view/{id}")
     public Map<String, Object> getGameView (@PathVariable long id) {
-        return gameViewDTO(gamePlayerRepository.getOne(id));
+        return gameViewDTO(gamePlayerRepository.findById(id).get());
     } //long porque id es numerico
 
 
