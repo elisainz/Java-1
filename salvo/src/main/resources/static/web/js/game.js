@@ -8,19 +8,20 @@ function getParameterByName(name) {
 };
 
 function loadData(){
-    $.get('/api/game_view/'+getParameterByName('gp'))
+        $.get('/api/game_view/'+getParameterByName('gp'))
         .done(function(data) {
             console.log(data)
             let playerInfo;
+
             if(data.gamePlayers[0].id == getParameterByName('gp'))
-                playerInfo = [data.gamePlayers[0].player.userName,data.gamePlayers[1].player.userName];
+                playerInfo = [data.gamePlayers[0].player.email,data.gamePlayers[1].player.email];
             else
-                playerInfo = [data.gamePlayers[1].player.userName,data.gamePlayers[0].player.userName];
+                playerInfo = [data.gamePlayers[1].player.email,data.gamePlayers[0].player.email];
 
             $('#playerInfo').text(playerInfo[0] + '(you) vs ' + playerInfo[1]);
 
             data.ships.forEach(function(shipPiece){
-                shipPiece.locations.forEach(function(shipLocation){
+                shipPiece.shipLocations.forEach(function(shipLocation){
                     $('#'+shipLocation).addClass('ship-piece');
                 })
             });

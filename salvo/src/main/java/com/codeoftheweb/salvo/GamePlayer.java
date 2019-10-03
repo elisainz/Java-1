@@ -4,6 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
 
 @Entity
@@ -17,14 +19,14 @@ public class GamePlayer {
     private Date joinDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="player_id") //quien lo comanda
+    @JoinColumn(name = "player_id") //quien lo comanda
     private Player player;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="game_id")//agregar columna con este nombre
+    @JoinColumn(name = "game_id")//agregar columna con este nombre
     private Game game;
 
-    @OneToMany(mappedBy="gamePlayer", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
     Set<Ship> ships;
 
     public GamePlayer() {
@@ -32,7 +34,9 @@ public class GamePlayer {
 
 
     public GamePlayer(Date joinDate, Game game, Player player) {
-        this.joinDate = joinDate; this.game = game; this.player = player;
+        this.joinDate = joinDate;
+        this.game = game;
+        this.player = player;
     }
 
     public long getId() {
@@ -56,7 +60,12 @@ public class GamePlayer {
         return ships;
     }
 
-
+    public Map<String, Object> getDto() {
+        Map<String, Object> dto = new LinkedHashMap<>(); //dto lo pasa a json
+        dto.put("id", getId());
+        dto.put("player", player.getPlayerDto());
+        return dto;
+    }
 
 }
 
