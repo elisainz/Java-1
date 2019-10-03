@@ -4,7 +4,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Entity //para que JPA se pase a base de datos y compile.
@@ -53,3 +55,9 @@ public class Salvo {
     }
 }
 
+    public Map<String, Object> getDto() {
+        Map<String, Object> dto = new LinkedHashMap<>();
+        dto.put("salvoLocations", getSalvoLocations());
+        return dto;
+    }
+}

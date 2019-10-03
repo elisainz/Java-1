@@ -41,7 +41,11 @@ public class SalvoController {
 
     private Map<String, Object> gameViewDTO(GamePlayer gamePlayer) {
         Map<String, Object> dto = gamePlayer.getGame().getDto();
+
         dto.put("ships", getShipList(gamePlayer.getShips()));
+
+        dto.put("salvoes", getSalvoList(gamePlayer.getGame().getGamePlayers()));
+
         return dto;
     }
 
@@ -50,6 +54,16 @@ public class SalvoController {
             return ships
                     .stream()
                     .map(Ship::getDto)
+                    .collect(Collectors.toList());
+        }
+    }
+
+    private List<Map<String, Object>> getSalvoList(Set<Salvo> salvoes) {
+        {
+            return salvoes
+                    .stream()
+                    .map(gamePlayer1 -> gamePlayer1.getSalvoes())
+                    .map(Salvo::getDto)
                     .collect(Collectors.toList());
         }
     }
