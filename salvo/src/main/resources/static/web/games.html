@@ -2,13 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Salvo!</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-​
-<ol></ol>
-​
-<script src="./js/games.js"></script>
+<body class="container">
+<h2> Salvo Games</h2>
+<div class="row">
+    <section class="col-6" >
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Total</th>
+                <th scope="col">Won</th>
+                <th scope="col">Lost</th>
+                <th scope="col">Tied</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="na1"></td>
+                <td id="to1"></td>
+                <td id="wo1"></td>
+                <td id="lo1"></td>
+                <td id="ti1"></td>
+            </tr>
+            <tr>
+                <td id="na2"></td>
+                <td id="to2"></td>
+                <td id="wo2"></td>
+                <td id="lo2"></td>
+                <td id="ti2"></td>
+            </tr>
+            <tr>
+                <td id="na3"></td>
+                <td id="to3"></td>
+                <td id="wo3"></td>
+                <td id="lo3"></td>
+                <td id="ti3"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+<ol id="game-list">
+</ol>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="../web/js/jquery-3.3.1.min.js"></script>
+<script src="../web/js/games.js"></script>
 </body>
 </html>

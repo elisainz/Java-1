@@ -7,6 +7,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import static java.util.stream.Collectors.toSet;
+
 @Entity
 public class Player {
 
@@ -26,6 +28,47 @@ public class Player {
         this.userName = user;
 
     }
+
+
+
+    public Set<Score> getTied() {
+        return getScores()
+                .stream()
+                .filter(score -> score.getScore() == 0.5)
+                .collect(toSet());
+    }
+
+    public Set<Score> getLost() {
+        return getScores()
+                .stream()
+                .filter(score -> score.getScore() == 0)
+                .collect(toSet());
+    }
+
+    public Set<Score> getWon() {
+        return getScores()
+                .stream()
+                .filter(score -> score.getScore() == 1)
+                .collect(toSet());
+    }
+
+
+    public double getTotalScore() {
+        return getWon().size() + getTied().size() * 0.5;
+    }
+
+    public Map<String, Object> getLeaderboardDto() {
+        Map<String, Object> dto = new LinkedHashMap<>();
+        dto.put("id", getId());
+        dto.put("name", getUserName());
+        dto.put("total", getTotalScore());
+        dto.put("won", getWon().size());
+        dto.put("lost", getLost().size());
+        dto.put("tied", getTied().size());
+        return dto;
+    }
+
+
 
     public long getId() {
         return id;

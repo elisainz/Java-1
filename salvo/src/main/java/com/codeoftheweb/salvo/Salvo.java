@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 
 @Entity //para que JPA se pase a base de datos y compile.
@@ -53,11 +54,15 @@ public class Salvo {
     public int getTurn() {
         return turn;
     }
-}
+
 
     public Map<String, Object> getDto() {
         Map<String, Object> dto = new LinkedHashMap<>();
+        dto.put("player", this.getGamePlayer().getPlayer().getId());
+        dto.put("turn", getTurn());
         dto.put("salvoLocations", getSalvoLocations());
+
         return dto;
     }
+
 }

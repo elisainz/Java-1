@@ -18,7 +18,7 @@ public class SalvoApplication {
 
     @Bean
     public CommandLineRunner initData(PlayerRepository playerRepository,
-                                      GameRepository gameRepository, GamePlayerRepository gamePlayerRepository, ShipRepository shipRepository) {
+                                      GameRepository gameRepository, GamePlayerRepository gamePlayerRepository, ShipRepository shipRepository, SalvoRepository salvoRepository, ScoreRepository scoreRepository) {
         return (args) -> {
             // save a couple of customers
             Player player1 = new Player("j.bauer@ctu.gov");
@@ -59,6 +59,25 @@ public class SalvoApplication {
 
             shipRepository.saveAll(Arrays.asList(ship1, ship2, ship3, ship4));
 
+
+            Salvo salvo1t1 = new Salvo (gameplayer1, new ArrayList<String>(Arrays.asList("E1", "F1", "G1")), 1);
+            Salvo salvo2t1 = new Salvo (gameplayer1, new ArrayList<String>(Arrays.asList("C", "C10")), 1);
+            Salvo salvo3t1 = new Salvo (gameplayer2, new ArrayList<String>(Arrays.asList("A1", "A2" )), 2);
+            Salvo salvo4t2 = new Salvo (gameplayer2, new ArrayList<String>(Arrays.asList("B5", "B6" )), 2);
+
+
+            salvoRepository.saveAll(Arrays.asList(salvo1t1, salvo2t1, salvo3t1, salvo4t2));
+
+
+            Score score1 = new Score(1, game1, player1);
+            Score score2 = new Score(0, game1, player2);
+            Score score3 = new Score(0.5, game2, player2);
+            Score score4 = new Score(0.5, game2, player3);
+            Score score5 = new Score(0, game3, player3);
+            Score score6 = new Score(1, game3, player4);
+
+
+            scoreRepository.saveAll(Arrays.asList(score1, score2, score3, score4,score5,score6));
 
         };
     }

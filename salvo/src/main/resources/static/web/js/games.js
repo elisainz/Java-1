@@ -1,15 +1,22 @@
-$(function(){
-    var listGames = $("ol")
-    var games = $.getJSON({
-        url:"http://localhost:8080/api/games",
-        })
-        .done(function ()
-            {
-            data.map(function()
-                {
-                let date = new Date(data.created).toLocaleString()
+$(function() {
+    loadData()
+});
 
-                '<li>' +  + '</li>'
-                )})
-            }
-            )}
+function updateView(data) {
+    let htmlList = data.map(function (games) {
+        return  '<li>' + new Date(games.created).toLocaleString() + ' ' + games.gamePlayers.map(function(p) { return p.player.email}).join(',')  +'</li>';
+    }).join('');
+  document.getElementById("game-list").innerHTML = htmlList;
+}
+
+// load and display JSON sent by server for /players
+
+function loadData() {
+    $.get("/api/games")
+        .done(function(data) {
+          updateView(data);
+        })
+        .fail(function( jqXHR, textStatus ) {
+          alert( "Failed: " + textStatus );
+        });
+}

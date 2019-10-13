@@ -29,6 +29,9 @@ public class GamePlayer {
     @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
     Set<Ship> ships;
 
+    @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
+    Set<Salvo> salvoes;
+
     public GamePlayer() {
     }
 
@@ -60,10 +63,17 @@ public class GamePlayer {
         return ships;
     }
 
+    public Set<Salvo> getSalvoes() //getter
+    {
+        return salvoes;
+    }
+
     public Map<String, Object> getDto() {
         Map<String, Object> dto = new LinkedHashMap<>(); //dto lo pasa a json
         dto.put("id", getId());
         dto.put("player", player.getPlayerDto());
+        dto.put("score", getPlayer().getScores());
+
         return dto;
     }
 
