@@ -21,6 +21,9 @@ public class Player {
     @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
     Set<GamePlayer> gamePlayers;
 
+    @OneToMany (mappedBy = "player", fetch = FetchType.EAGER)
+    Set<Score> scores;
+
     public Player() {
     }  //constructor vacio
 
@@ -35,7 +38,7 @@ public class Player {
         return getScores()
                 .stream()
                 .filter(score -> score.getScore() == 0.5)
-                .collect(toSet());
+                .collect(toSet()); //lo vuelve a pasar al set de la clase Score. nuevo array
     }
 
     public Set<Score> getLost() {
@@ -54,7 +57,8 @@ public class Player {
 
 
     public double getTotalScore() {
-        return getWon().size() + getTied().size() * 0.5;
+
+        return getWon().size() + getTied().size() * 0.5 + getLost().size() * 0;
     }
 
     public Map<String, Object> getLeaderboardDto() {
@@ -69,6 +73,7 @@ public class Player {
     }
 
 
+    public Set<Score> getScores () {return scores; }
 
     public long getId() {
         return id;

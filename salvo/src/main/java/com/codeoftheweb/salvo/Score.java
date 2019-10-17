@@ -23,7 +23,9 @@ public class Score {
     @JoinColumn(name = "player_id")
     private Player player;
 
-    public Score() { }
+
+    public Score() {
+    } //constructor vacio
 
     public Score(double score, Game game, Player player) {
         this.score = score;

@@ -17,11 +17,14 @@ import static java.util.stream.Collectors.toList;
 
 public class SalvoController {
 
-    @Autowired
+    @Autowired //sirve para enlazar las interfases
     private GameRepository gameRepository;
 
     @Autowired
     private GamePlayerRepository gamePlayerRepository;
+
+    @Autowired
+    private PlayerRepository playerRepository;
 
     @RequestMapping("/games")
     public List<Map<String, Object>> getGames() {
@@ -55,11 +58,12 @@ public class SalvoController {
     }
 
     private List<Map<String, Object>> getShipList(Set<Ship> ships) {
-        {
+
             return ships
                     .stream()
                     .map(Ship::getDto)
                     .collect(Collectors.toList());
+        }
 
 
 
@@ -71,10 +75,4 @@ public class SalvoController {
                     .map(Player::getLeaderboardDto)
                     .collect(toList());
         }
-        }
-    }
-
-
-
-
 }

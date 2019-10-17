@@ -39,8 +39,9 @@ public class SalvoApplication {
             Game game1 = new Game(date1);
             Game game2 = new Game(date2);
             Game game3 = new Game(date3);
+            Game game4 = new Game (date3);
 
-            gameRepository.saveAll(Arrays.asList(game1, game2, game3));
+            gameRepository.saveAll(Arrays.asList(game1, game2, game3, game4));
 
 
             GamePlayer gameplayer1 = new GamePlayer(date1, game1, player1); //pruebas
@@ -75,9 +76,11 @@ public class SalvoApplication {
             Score score4 = new Score(0.5, game2, player3);
             Score score5 = new Score(0, game3, player3);
             Score score6 = new Score(1, game3, player4);
+            Score score7 = new Score(0.5, game4, player1);
+            Score score8 = new Score(0.5, game4, player2);
 
 
-            scoreRepository.saveAll(Arrays.asList(score1, score2, score3, score4,score5,score6));
+            scoreRepository.saveAll(Arrays.asList(score1, score2, score3, score4,score5,score6, score7, score8));
 
         };
     }

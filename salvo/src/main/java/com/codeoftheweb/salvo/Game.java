@@ -24,7 +24,8 @@ public class Game {
     @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
     Set<Score> scores;
 
-
+    public Game() {
+    } //constructor vacio
 
     public Game(Date gameTime) {
         this.gameTime = gameTime;
@@ -37,6 +38,8 @@ public class Game {
     public Date getGameTime() {
         return gameTime;
     }
+
+    public Set<Score> getScores() {return scores; }
 
     public Set<GamePlayer> getGamePlayers() {
         return gamePlayers;
