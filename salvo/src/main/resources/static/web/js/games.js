@@ -6,9 +6,11 @@ $(function() {
 
 function updateView(data) {
     let htmlList = data.map(function (games) {
-        return  '<li>' + new Date(games.created).toLocaleString() + ' ' + games.////???? .map(function(p) { return p.player.email}).join(',')  +'</li>';
+
+        return  '<tr> <td>' + games.name + '</td> <td>' + games.total + '</td> <td>' + games.won + '</td> </td>' + '</td> <td>' + games.lost + '</td> <td>' + games.tied + '</td> <tr>'     ; //+ ' ' + games.////???? .map(function(p) { return p.player.email}).join(',')  +'</li>';
     }).join('');
-  document.getElementById("game-list").innerHTML = htmlList;
+
+  document.getElementById("game-table").innerHTML = htmlList;
 }
 
 // load and display JSON sent by server for /players
